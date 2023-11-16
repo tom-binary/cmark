@@ -691,22 +691,21 @@ static void render_commonmark(test_batch_runner *runner) {
   commonmark = cmark_render_commonmark(doc, CMARK_OPT_DEFAULT, 26);
   STR_EQ(runner, commonmark, "> \\- foo *bar* \\*bar\\*\n"
                              "\n"
-                             "  - Lorem ipsum dolor sit\n"
-                             "    amet, consectetur\n"
-                             "    adipiscing elit,\n"
-                             "  - sed do eiusmod tempor\n"
-                             "    incididunt ut labore\n"
-                             "    et dolore magna\n"
-                             "    aliqua.\n",
+                             "- Lorem ipsum dolor sit\n"
+                             "  amet, consectetur\n"
+                             "  adipiscing elit,\n"
+                             "- sed do eiusmod tempor\n"
+                             "  incididunt ut labore et\n"
+                             "  dolore magna aliqua.\n",
          "render document with wrapping");
   free(commonmark);
   commonmark = cmark_render_commonmark(doc, CMARK_OPT_DEFAULT, 0);
   STR_EQ(runner, commonmark, "> \\- foo *bar* \\*bar\\*\n"
                              "\n"
-                             "  - Lorem ipsum dolor sit amet,\n"
-                             "    consectetur adipiscing elit,\n"
-                             "  - sed do eiusmod tempor incididunt\n"
-                             "    ut labore et dolore magna aliqua.\n",
+                             "- Lorem ipsum dolor sit amet,\n"
+                             "  consectetur adipiscing elit,\n"
+                             "- sed do eiusmod tempor incididunt\n"
+                             "  ut labore et dolore magna aliqua.\n",
          "render document without wrapping");
   free(commonmark);
 
